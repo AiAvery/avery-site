@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Avery — Conversational Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#f5f0e8;font-family:'DM Sans',-apple-system,sans-serif;color:#2c2620}
+
+/* ── NAV ── */
+.nav{background:#fffdf9;border-bottom:1px solid #e0d8cc;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.nav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:400;color:#2c2620;letter-spacing:.02em;text-decoration:none}
+.nav-logo em{color:#b5621e;font-style:italic}
+.nav-r{display:flex;gap:24px;align-items:center}
+.nav-link{font-size:13px;color:#a89e94;text-decoration:none;transition:color .15s}
+.nav-link:hover{color:#2c2620}
+.nav-beta{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#b5621e;background:rgba(181,98,30,.1);border:1px solid rgba(181,98,30,.2);padding:3px 9px;border-radius:12px}
+
+/* ── HERO ── */
+.hero{padding:96px 48px 80px;background:#f5f0e8;text-align:center}
+.hero-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:#4a7c5f;margin-bottom:26px;display:flex;align-items:center;justify-content:center;gap:8px}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:#4a7c5f}
+.hero-h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:400;color:#2c2620;line-height:1.2;margin:0 auto 0;max-width:680px}
+.hero-h1 em{color:#b5621e;font-style:italic}
+.hero-sub{font-size:17px;color:#7a6e63;line-height:1.8;max-width:480px;margin:24px auto 42px}
+.hero-sub strong{color:#2c2620;font-weight:500}
+.hero-form{display:flex;gap:10px;max-width:420px;margin:0 auto 14px}
+.hero-input{flex:1;padding:14px 16px;border:1.5px solid #cec5b8;border-radius:9px;font-size:14px;background:#fffdf9;color:#2c2620;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s}
+.hero-input:focus{border-color:#b5621e}
+.hero-input::placeholder{color:#a89e94}
+.hero-btn{padding:14px 26px;background:#b5621e;color:white;border:none;border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:background .15s}
+.hero-btn:hover{background:#c97228}
+.hero-note{font-size:12px;color:#a89e94;text-align:center}
+
+/* ── NOT SECTION ── */
+.not-section{background:#fffdf9;border-top:1px solid #e0d8cc;border-bottom:1px solid #e0d8cc;padding:32px 48px}
+.not-row{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:20px}
+.not-label{font-size:13px;color:#a89e94;font-style:italic;white-space:nowrap;margin-right:4px}
+.not-item{display:flex;align-items:center;gap:7px;font-size:13px;color:#88827a}
+.not-dot-r{width:7px;height:7px;border-radius:50%;background:#e24b4a;flex-shrink:0}
+.not-rule{border:none;border-top:1px solid #ede8de;margin:0 0 22px}
+.not-statement{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:400;color:#4a7c5f;line-height:1.5;letter-spacing:.01em}
+.not-statement-sub{font-size:14px;color:#a89e94;margin-top:7px;font-style:italic}
+
+/* ── SPLIT ── */
+.split{display:grid;grid-template-columns:1fr 1fr;background:#f5f0e8}
+.split-col{padding:48px}
+.split-col:first-child{border-right:1px solid #e0d8cc}
+.split-col.answer{background:#fdf8f1}
+.split-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.13em;color:#b5621e;margin-bottom:16px}
+.split-label.sage{color:#4a7c5f}
+.split-h{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:400;color:#2c2620;margin-bottom:14px;line-height:1.4}
+.split-d{font-size:14px;color:#7a6e63;line-height:1.85}
+.split-d strong{color:#2c2620;font-weight:500}
+
+/* ── FEATURES ── */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e0d8cc;border-top:1px solid #e0d8cc}
+.feat{background:#fffdf9;padding:32px 28px}
+.feat-icon{width:36px;height:36px;border-radius:50%;margin-bottom:16px;display:flex;align-items:center;justify-content:center}
+.feat-t{font-size:14px;font-weight:500;color:#2c2620;margin-bottom:8px}
+.feat-d{font-size:13px;color:#88827a;line-height:1.7}
+
+/* ── QUOTE BAND ── */
+.quote-band{background:#2c2620;padding:56px 48px;text-align:center}
+.quote-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:400;color:#ede8de;line-height:1.6;max-width:600px;margin:0 auto 14px;font-style:italic}
+.quote-attr{font-size:11px;color:#7a6e63;text-transform:uppercase;letter-spacing:.12em}
+
+/* ── HOW IT WORKS ── */
+.how{background:#f5f0e8;border-top:1px solid #e0d8cc;padding:64px 48px;text-align:center}
+.how-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:#4a7c5f;margin-bottom:16px}
+.how-h{font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;font-weight:400;color:#2c2620;margin-bottom:48px}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:800px;margin:0 auto}
+.how-step{text-align:center}
+.how-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:400;color:#b5621e;margin-bottom:10px;line-height:1}
+.how-step-t{font-size:14px;font-weight:500;color:#2c2620;margin-bottom:7px}
+.how-step-d{font-size:13px;color:#88827a;line-height:1.7}
+.how-divider{width:1px;background:#e0d8cc;height:60px;margin:0 auto}
+
+/* ── CTA BAND ── */
+.cta-band{background:#fffdf9;border-top:1px solid #e0d8cc;padding:72px 48px;text-align:center}
+.cta-h{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:400;color:#2c2620;margin-bottom:12px}
+.cta-h em{color:#b5621e;font-style:italic}
+.cta-sub{font-size:15px;color:#a89e94;margin-bottom:36px;line-height:1.75;max-width:400px;margin-left:auto;margin-right:auto}
+.cta-form{display:flex;gap:10px;max-width:400px;margin:0 auto 14px}
+.cta-input{flex:1;padding:14px 16px;border:1.5px solid #cec5b8;border-radius:9px;font-size:14px;background:#f5f0e8;color:#2c2620;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s}
+.cta-input:focus{border-color:#b5621e}
+.cta-input::placeholder{color:#a89e94}
+.cta-btn{padding:14px 26px;background:#b5621e;color:white;border:none;border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:background .15s}
+.cta-btn:hover{background:#c97228}
+.cta-note{font-size:12px;color:#cec5b8}
+
+/* ── FOOTER ── */
+.footer{background:#f5f0e8;border-top:1px solid #e0d8cc;padding:24px 48px;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;color:#a89e94}
+.footer-logo em{color:#b5621e;font-style:italic}
+.footer-links{display:flex;gap:24px}
+.footer-link{font-size:12px;color:#cec5b8;text-decoration:none}
+.footer-note{font-size:12px;color:#cec5b8}
+
+/* ── RESPONSIVE ── */
+@media(max-width:680px){
+  .nav{padding:14px 24px}
+  .hero{padding:64px 24px 52px}
+  .hero-h1{font-size:36px}
+  .hero-form,.cta-form{flex-direction:column}
+  .not-section{padding:24px}
+  .split{grid-template-columns:1fr}
+  .split-col:first-child{border-right:none;border-bottom:1px solid #e0d8cc}
+  .features{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr;gap:24px}
+  .quote-band{padding:40px 24px}
+  .cta-band{padding:52px 24px}
+  .footer{flex-direction:column;gap:12px;text-align:center;padding:20px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="#">Ask <em>Avery</em></a>
+  <div class="nav-r">
+    <a class="nav-link" href="#how">How it works</a>
+    <a class="nav-link" href="#beta">Beta</a>
+    <span class="nav-beta">Beta</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow"><div class="hero-dot"></div>Conversational intelligence — now in beta</div>
+  <h1 class="hero-h1">The conversation you've been avoiding at work?<br><em>Ask Avery.</em></h1>
+  <p class="hero-sub">For <strong>critical conversations</strong>, honest feedback, and practicing the moments that actually matter — <strong>before they happen.</strong></p>
+  <div class="hero-form">
+    <input class="hero-input" type="email" placeholder="your@email.com">
+    <button class="hero-btn">Join the beta</button>
+  </div>
+  <p class="hero-note">Beta access. No commitment.</p>
+</section>
+
+<section class="not-section">
+  <div class="not-row">
+    <span class="not-label">Avery is not</span>
+    <div class="not-item"><div class="not-dot-r"></div>A training course</div>
+    <div class="not-item"><div class="not-dot-r"></div>A compliance tool</div>
+    <div class="not-item"><div class="not-dot-r"></div>A chatbot</div>
+    <div class="not-item"><div class="not-dot-r"></div>A lecture</div>
+  </div>
+  <hr class="not-rule">
+  <div class="not-statement">A trusted thinking partner — available the exact moment you need it.</div>
+  <div class="not-statement-sub">Quietly, in the flow of work.</div>
+</section>
+
+<section class="split">
+  <div class="split-col">
+    <div class="split-label">The problem</div>
+    <h2 class="split-h">Training happens in a classroom.</h2>
+    <p class="split-d">Organizations spend <strong>$350 billion a year</strong> on employee development, and most of it doesn't change behavior — because it's disconnected from real work. The hard conversation happens three weeks after the training, with no support in sight.</p>
+  </div>
+  <div class="split-col answer">
+    <div class="split-label sage">Avery's approach</div>
+    <h2 class="split-h">Available the exact moment it matters.</h2>
+    <p class="split-d">Avery lives in Slack, Teams, and your browser. One question at a time. Realistic practice conversations. No jargon, no compliance energy. It feels like <strong>a trusted colleague who happens to be very perceptive.</strong></p>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feat">
+    <div class="feat-icon" style="background:rgba(181,98,30,.1)">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M3 5h7M3 11h5" stroke="#b5621e" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </div>
+    <div class="feat-t">One question at a time</div>
+    <div class="feat-d">No lectures. No information dumps. Avery asks, listens, and meets you exactly where you are.</div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon" style="background:rgba(74,124,95,.1)">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13V5.5A2 2 0 015 3.5h6A2 2 0 0113 5.5V13" stroke="#4a7c5f" stroke-width="1.4" stroke-linecap="round"/><path d="M5.5 9c.5.5 1 .8 2.5.8s2-.3 2.5-.8" stroke="#4a7c5f" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </div>
+    <div class="feat-t">Realistic practice</div>
+    <div class="feat-d">Role play the conversation before it happens. Avery plays the other person. You debrief after.</div>
+  </div>
+  <div class="feat">
+    <div class="feat-icon" style="background:rgba(181,98,30,.08)">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 11l3-3 2 2 5-5" stroke="#b5621e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="feat-t">Tracks real growth</div>
+    <div class="feat-d">Confidence before and after each topic. You can see yourself getting better — quietly, over time.</div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="quote-text">"It feels like talking to a trusted colleague who happens to be very perceptive."</div>
+  <div class="quote-attr">Beta tester — Ask Avery</div>
+</section>
+
+<section class="how" id="how">
+  <div class="how-label">How it works</div>
+  <h2 class="how-h">Three minutes to your first real conversation.</h2>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="how-num">1</div>
+      <div class="how-step-t">Install in Chrome</div>
+      <div class="how-step-d">Add Avery to your browser in under five minutes. It lives in your toolbar — always there, never in the way.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">2</div>
+      <div class="how-step-t">Open when it matters</div>
+      <div class="how-step-d">Click the Avery icon from any webpage — Gmail, Slack, LinkedIn, anywhere. The panel opens alongside your work.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">3</div>
+      <div class="how-step-t">Have the conversation</div>
+      <div class="how-step-d">Talk to Avery about what's actually happening. Practice it. Commit to one small thing. Come back and see what shifted.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="beta">
+  <h2 class="cta-h">Ready to <em>Ask Avery?</em></h2>
+  <p class="cta-sub">Join the beta. No commitment, no compliance training, no lectures. Just better conversations.</p>
+  <div class="cta-form">
+    <input class="cta-input" type="email" placeholder="your@email.com">
+    <button class="cta-btn">Join the beta</button>
+  </div>
+  <p class="cta-note">Beta access — tryavery.ai</p>
+</section>
+
+<footer class="footer">
+  <span class="footer-logo">Ask <em>Avery</em></span>
+  <div class="footer-links">
+    <a class="footer-link" href="#">About</a>
+    <a class="footer-link" href="#">Privacy</a>
+    <a class="footer-link" href="#">Contact</a>
+  </div>
+  <span class="footer-note">tryavery.ai &mdash; beta 2025</span>
+</footer>
+
+</body>
+</html>
